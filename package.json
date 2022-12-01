@@ -1,0 +1,13 @@
+{
+  "name": "hours-counter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Count work hours",
+  "main": "index.js",
+  "scripts": {
+    "start": "deno run --allow-read index.ts",
+    "start:watch": "deno run --allow-read --watch index.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
