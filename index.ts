@@ -1,14 +1,3 @@
-/**
- * Example input:
- * 7h 30m
- * 7h 15m
- *
- *
- * 2h<br><br>2h 30m
- *
- * 30m
- */
-
 const input = await Deno.readTextFile('input.txt')
 
 const dailyEntries = input
