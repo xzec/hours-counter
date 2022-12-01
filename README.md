@@ -2,6 +2,10 @@
 
 Helps with counting working hours formatted in very opinionated way.
 
+## Prerequisites
+- `deno` installed
+- Deno extension for your code editor installed and enabled for this project
+
 ## Run
 ```shell
 npm run start
