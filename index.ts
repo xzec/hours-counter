@@ -2,8 +2,9 @@ const input = await Deno.readTextFile('input.txt')
 
 const dailyEntries = input
   .split('\n')
+  .map((line) => line.trim()) // remove whitespace from lines
   .filter(Boolean) // remove empty entries (days not working)
-  .map((entry) => entry.replaceAll('<br>', ' ').replace(/  +/g, ' ').trim()) // remove <br> elements and reduce multiple spaces to one, remove whitespace
+  .map((entry) => entry.replaceAll('<br>', ' ').replace(/  +/g, ' ')) // remove <br> elements and reduce multiple spaces to one
 
 const hoursAndMinutes = dailyEntries.join(' ').split(' ') // break down to time entries, e.g. ['1h', '30m', '4h']
 
