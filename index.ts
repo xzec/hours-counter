@@ -22,10 +22,10 @@ const timeEntryToHours = (entry: string) => {
   if (isHours(entry)) return parseInt(entry)
   else if (isMinutes(entry)) return parseInt(entry) / 60
   else if (entry.includes('?'))
-    throw new Error(`Unfilled value. Entry looks like this: ${entry}`)
+    throw new Error(`Unfilled value. Entry looks like this: "${entry}"`)
   else
     throw new Error(
-      `Wrong input. Entry is not in hours nor minutes. Entry looks like this: ${entry}`
+      `Wrong input. Entry is not in hours nor minutes. Entry looks like this: "${entry}"`
     )
 }
 
@@ -33,12 +33,14 @@ const totalHours = hoursAndMinutes.reduce(
   (hours, entry) => hours + timeEntryToHours(entry),
   0
 )
+const totalManDays = totalHours / 8
 
 const humanReadableTime = (hours: number) =>
   `${Math.floor(hours)}h ${Math.round((hours % 1) * 60)}m`
 
 console.table({
-  ['Days']: dailyEntries.length,
+  ['Days working']: dailyEntries.length,
+  ['Man Days']: Math.round(totalManDays * 100) / 100,
   ['Hours']: Math.round(totalHours * 100) / 100,
   ['Pretty hours']: humanReadableTime(totalHours),
 })
