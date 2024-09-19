@@ -6,13 +6,17 @@ const dailyEntries = lines
   .filter(Boolean) // remove empty entries (days not working)
   .map((entry) => entry.replace(/<br>/g, ' ').replace(/  +/g, ' ').trim()) // remove <br> elements and reduce multiple spaces to one
 
+if (!dailyEntries.length) {
+  console.warn('No hours to count. Add some in the input.txt file.')
+  Deno.exit(1)
+}
+
 const hoursAndMinutes = dailyEntries.join(' ').split(' ') // break down to time entries, e.g. ['1h', '30m', '4h']
 
 const hoursRegex = /^([1-9][0-9]?h)$/
 const minutesRegex = /^([1-9][0-9]?m)$/
 
 const isHours = (entry: string) => entry.match(hoursRegex)
-
 const isMinutes = (entry: string) => entry.match(minutesRegex)
 
 // transforms time entries in string format like '1h' or '30m' to hours, always number
