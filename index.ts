@@ -1,8 +1,15 @@
-const input = await Deno.readTextFile('input.txt')
+let input: string
+try {
+  input = await Deno.readTextFile('input.txt')
+} catch (error) {
+  if (error.code === 'ENOENT') {
+    console.warn('Please, provide an input.txt file with working hours.')
+    Deno.exit(1)
+  } else throw error
+}
 
-const lines = input.split('\n')
-
-const dailyEntries = lines
+const dailyEntries = input
+  .split('\n') // split lines
   .filter(Boolean) // remove empty entries (days not working)
   .map((entry) => entry.replace(/<br>/g, ' ').replace(/  +/g, ' ').trim()) // remove <br> elements and reduce multiple spaces to one
 
