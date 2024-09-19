@@ -1,10 +1,10 @@
 const input = await Deno.readTextFile('input.txt')
 
-const dailyEntries = input
-  .split('\n')
-  .map((line) => line.trim()) // remove whitespace from lines
+const lines = input.split('\n')
+
+const dailyEntries = lines
   .filter(Boolean) // remove empty entries (days not working)
-  .map((entry) => entry.replaceAll('<br>', ' ').replace(/  +/g, ' ')) // remove <br> elements and reduce multiple spaces to one
+  .map((entry) => entry.replace(/<br>/g, ' ').replace(/  +/g, ' ').trim()) // remove <br> elements and reduce multiple spaces to one
 
 const hoursAndMinutes = dailyEntries.join(' ').split(' ') // break down to time entries, e.g. ['1h', '30m', '4h']
 
@@ -15,9 +15,7 @@ const isHours = (entry: string) => entry.match(hoursRegex)
 
 const isMinutes = (entry: string) => entry.match(minutesRegex)
 
-/**
- * transforms time entries in string format like '1h' or '30m' to hours, always number
- */
+// transforms time entries in string format like '1h' or '30m' to hours, always number
 const timeEntryToHours = (entry: string) => {
   if (isHours(entry)) return parseInt(entry)
   else if (isMinutes(entry)) return parseInt(entry) / 60
