@@ -1,10 +1,10 @@
 ## Hours counter
 
-Helps with counting working hours formatted in very opinionated way.
+Counts working hours formatted in a very opinionated way.
 
 ## Prerequisites
-- `deno` installed
-- Deno extension for your code editor installed and enabled for this project
+- `deno` installed,
+- Deno extension for your code editor installed and enabled for this project.
 
 ## Run
 ```shell
@@ -32,7 +32,8 @@ npm run start
 ┌──────────────┬───────────┐
 │ (idx)        │ Values    │
 ├──────────────┼───────────┤
-│ Days         │ 7         │
+│ Days working │ 7         │
+│ Man Days     │ 7.02      │
 │ Hours        │ 56.17     │
 │ Pretty hours │ "56h 10m" │
 └──────────────┴───────────┘
