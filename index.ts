@@ -1,12 +1,9 @@
-let input: string
-try {
-  input = await Deno.readTextFile('input.txt')
-} catch (error) {
+const input = await Deno.readTextFile('input.txt').catch((error) => {
   if (error.code === 'ENOENT') {
-    console.warn('Please, provide an input.txt file with working hours.')
+    console.warn('⚠️ Provide an input.txt file with working hours.')
     Deno.exit(1)
   } else throw error
-}
+})
 
 const dailyEntries = input
   .split('\n') // split lines
