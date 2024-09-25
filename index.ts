@@ -10,8 +10,8 @@ try {
 
 const dailyEntries = input
   .split('\n') // split lines
-  .filter(Boolean) // remove empty entries (days not working)
   .map((entry) => entry.replace(/<br>/g, ' ').replace(/  +/g, ' ').trim()) // remove <br> elements and reduce multiple spaces to one
+  .filter(Boolean) // remove empty entries (days not working)
 
 if (!dailyEntries.length) {
   console.warn('No hours to count. Add some in the input.txt file.')
